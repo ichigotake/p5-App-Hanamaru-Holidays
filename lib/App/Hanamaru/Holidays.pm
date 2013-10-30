@@ -73,24 +73,11 @@ __DATA__
 
 =head1 NAME
 
-echo_holidays.pl - 月の休日の一覧を出力します。
+App::Hanamaru::Holidays - 月の休日の一覧を出力します。
 
-=head1 SYNOPSYS
+=head1 SYNOPSIS
 
-    $ perl echo_holidays.pl 2013 3
-    2013年
-    ----
-    3/2(土) 
-    3/3(日) 
-    3/9(土) 
-    3/10(日) 
-    3/16(土) 
-    3/17(日) 
-    3/20(水) 春分の日
-    3/23(土) 
-    3/24(日) 
-    3/30(土) 
-    3/31(日)
+    $ carton install && carton exec -- plackup
     
 =head1 TODO
 
@@ -104,7 +91,7 @@ echo_holidays.pl - 月の休日の一覧を出力します。
 
 =head1 AUTHOR
 
-Takayuki Otake
+ichigotake
 
 =cut
 
