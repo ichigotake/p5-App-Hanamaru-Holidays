@@ -2,30 +2,57 @@ package App::Hanamaru::Holidays;
 use strict;
 use warnings;
 use utf8;
-use Nephia;
 
+use Plack::Builder;
+use Plack::Request;
 use Calendar::Japanese::Holiday;
 use Time::Local qw/timelocal/;
 use Encode qw/encode/;
 
 our $VERSION = 0.01;
 
-app {
-    my $body = format_holidays(param('year'), param('month'));
-    [200,
-    ['Content-Type' => 'text/plain; charset=utf8'],
-    Encode::encode_utf8($body)];
-};
+sub new {
+    my $class = shift;
+    bless {}, $class;
+}
 
-sub format_holidays {
-    my ($year, $mon) = @_;
+sub to_app {
+    my ($self) = @_;
+
+    use Data::Dumper;
+    my (undef, $a) = caller;
+    warn Dumper $a;
+
+    Plack::Builder->import;
+    return builder {
+        mount('/', $self->_build_app);
+    };
+}
+
+sub _build_app {
+    my $self = shift;
+    return sub {
+        my $env = shift;
+
+        my $req = Plack::Request->new($env);
+        my $body = $self->_format_holidays($req->param('year'), $req->param('month'));
+        [
+            200,
+            ['Content-Type' => 'text/plain; charset=utf8'],
+            [Encode::encode_utf8($body)]
+        ];
+    };
+}
+
+sub _format_holidays {
+    my ($self, $year, $mon) = @_;
     my (undef,undef,undef, undef,$now_mon,$now_year) = localtime(time);
     $year //= $now_year + 1900;
     $mon  //= $now_mon + 1;
 
     my @weeks = qw/日 月 火 水 木 金 土/;
     my $output = "";
-    my $holidays = _get_holidays($year, $mon);
+    my $holidays = $self->_get_holidays($year, $mon);
 
     $output .= $year . "年\n";
     $output .=  "----\n";
@@ -40,7 +67,7 @@ sub format_holidays {
 
 
 sub _get_holidays {
-    my ($year, $mon) = @_;
+    my ($self, $year, $mon) = @_;
 
     my %holidays;
     my $holidays = getHolidays($year, $mon);
