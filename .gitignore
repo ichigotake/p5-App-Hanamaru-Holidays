@@ -1,3 +1,11 @@
 cpanfile.snapshot
 local/
 extlib/
+/App-Hanamaru-Holidays-*
+/.build
+/_build_params
+/Build
+/Build.bat
+!Build/
+!META.json
+!LICENSE

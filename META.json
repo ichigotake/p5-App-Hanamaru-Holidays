@@ -1,0 +1,72 @@
+{
+   "abstract" : "æã®ä¼æ¥ã®ä¸è¦§ãåºåãã¾ãã",
+   "author" : [
+      "ichigotake"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Minilla/v0.8.1, CPAN::Meta::Converter version 2.132830",
+   "license" : [
+      "unknown"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "App-Hanamaru-Holidays",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "xt",
+         "inc",
+         "share",
+         "eg",
+         "examples",
+         "author",
+         "builder"
+      ]
+   },
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "CPAN::Meta" : "0",
+            "CPAN::Meta::Prereqs" : "0",
+            "Module::Build" : "0.38"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Test::CPAN::Meta" : "0",
+            "Test::MinimumVersion" : "0.10108",
+            "Test::Pod" : "1.41",
+            "Test::Spellunker" : "v0.2.7"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Calendar::Japanese::Holiday" : "0",
+            "Plack" : "0"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::More" : "0"
+         }
+      }
+   },
+   "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/ichigotake/p5-App-Hanamaru-Holidays/issues"
+      },
+      "homepage" : "https://github.com/ichigotake/p5-App-Hanamaru-Holidays",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/ichigotake/p5-App-Hanamaru-Holidays",
+         "web" : "https://github.com/ichigotake/p5-App-Hanamaru-Holidays"
+      }
+   },
+   "version" : "0.01",
+   "x_contributors" : [
+      "ichigotake <k.wisiiy@gmail.com>"
+   ]
+}
